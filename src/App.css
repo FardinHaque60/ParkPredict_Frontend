@@ -1,42 +1,178 @@
+/* Global reset and centering styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
 #root {
-  max-width: 1280px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.header {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0056b3;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.fullness-section,
+.prediction-section,
+.shuttle-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-  padding: 2em;
+/* Section title styling */
+.fullness-section h2,
+.prediction-section h3,
+.shuttle-section h3 {
+  color: #000000;
+  margin-bottom: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+.garage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.garage-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.garage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.garage-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000000;
+}
+
+.garage-address {
+  color: #666;
+  text-decoration: none;
+}
+
+.garage-fullness {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0056b3;
+}
+
+.prediction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+}
+
+.prediction-form input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.prediction-form button {
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.prediction-form button:hover {
+  background-color: #003d82;
+}
+
+.prediction-result {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.shuttle-links {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shuttle-links a {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.shuttle-links a:hover {
+  text-decoration: underline;
+}
+
+.parking-link,
+.refresh-link {
+  color: #0056b3;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.parking-link:hover,
+.refresh-link:hover {
+  text-decoration: underline;
+}
+
+.last-updated {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+/* Additional text elements that need black color */
+.prediction-form label {
+  color: #000000;
+}
+
+.shuttle-section > div:first-of-type {
+  color: #000000;
 }
