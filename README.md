@@ -10,7 +10,7 @@ backend and experiment related code is located in:
 - experiments: https://github.com/FardinHaque60/ParkPredict_Experiments
 
 ## Run the App
-`npm start`
+`npm run dev`
 
 ## Stack: React + Vite
 
