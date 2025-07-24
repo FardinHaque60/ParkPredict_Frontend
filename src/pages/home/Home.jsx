@@ -25,12 +25,10 @@ function Home() {
                     </a>
                 </h2>
                 <p className="timestamp">
-                    Last updated 2025-2-14 6:28:00 AM
-                    <Link className="btn btn-primary" to="/GarageStatusPlain" style={{ width: "100%" }}>
-                        Refresh
-                    </Link>
+                    Last updated 2025-2-14 6:28:00 AM <Link className="btn btn-primary" to="/GarageStatusPlain" style={{ width: "100%" }}> Refresh </Link>
                 </p>
                 <div className="garage">
+                    <p></p>
                     <h2 className="garage__name">South Garage</h2>
                     <p className="garage__text">
                         <a className="garage__address" href="https://www.google.com/maps/place/377 S. 7th St., San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
@@ -38,6 +36,7 @@ function Home() {
                         </a>
                         <span className="garage__fullness">34 %</span>
                     </p>
+                    <p></p>
 
                     <h2 className="garage__name">West Garage</h2>
                     <p className="garage__text">
@@ -46,6 +45,7 @@ function Home() {
                         </a>
                         <span className="garage__fullness">13 %</span>
                     </p>
+                    <p></p>
 
                     <h2 className="garage__name">North Garage</h2>
                     <p className="garage__text">
@@ -54,6 +54,7 @@ function Home() {
                         </a>
                         <span className="garage__fullness">5 %</span>
                     </p>
+                    <p></p>
 
                     <h2 className="garage__name">South Campus Garage</h2>
                     <p className="garage__text">
@@ -62,6 +63,7 @@ function Home() {
                         </a>
                         <span className="garage__fullness">0 %</span>
                     </p>
+                    <p></p>
                 </div>
                 <h2>Parking Shuttles</h2>
                 <p className="u-lift">
