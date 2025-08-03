@@ -34,16 +34,37 @@
 }
 
 .parking-services {
-	padding: 0;
+	display: flex;
+	flex-direction: row;
+	gap: 0.25rem;
 	font-size: 1rem;
 	margin-top: 0;
+	margin-bottom: 0;
 }
 
-.timestamp {
+.garages__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: end;
 	padding: 0;
 	margin-top: 0;
-	font-size: .75rem;
+	width: 100%;
+}
+
+.columns {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 50%;
+}
+
+.column__name {
+	padding: 0;
+	margin: 0;
 	line-height: 1;
+	text-decoration: underline;
+	text-align: center;
 }
 
 /* E| Garage */
@@ -53,6 +74,7 @@ garage {
 	flex-direction: column;
 	padding: 1rem 1rem .5rem 1rem;
 	margin-bottom: 1rem;
+	justify-content: space-between;
 	border-top: 1px solid #999999;
 	border-right: 1px solid #666666;
 	border-bottom: 1px solid #333333;
@@ -64,7 +86,7 @@ garage {
 	font-size: 1.25rem;
 }
 
-.garage__text {
+.garage__section {
 	margin: 0;
 	font-size: .8rem;
 	display: flex;
@@ -77,10 +99,19 @@ garage {
 	background-image: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-location-sjsu-blue-small.svg');
 	background-repeat: no-repeat;
 	background-position: left center;
+	justify-content: flex-start;
 	padding-left: 16px;
 }
 
-.garage__fullness {
+.garage__stats {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+}
+
+.garage__percentage {
 	margin-top: -1.25rem;
 	font-size: 1.75rem;
 	line-height: 1;
