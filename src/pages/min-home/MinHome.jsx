@@ -1,39 +1,23 @@
 /* minimal home display for initial load, just shows predicted values */
 import '../styles/HomeStyles.css';
 import TopBar from '../components/TopBar';
+import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PredictObj } from '../../service/ResponseObjs';
-import { fetchPredictions, fetchQuickPredictions } from '../../service/Api';
+import { fetchQuickPredictions } from '../../service/Api';
 import { DateTime } from 'luxon';
-import { FaArrowRight, FaEdit, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 function MinHome() {
     const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
     const [predictions, setPredictions] = useState(PredictObj);
-    // State for edit icon, check, x icon, etc.
     const [isLoading, setIsLoading] = useState(true);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editableTime, setEditableTime] = useState(predictionTime.toFormat('HH:mm'));
 
     useEffect(() => {
         fetchQuickPredictions(predictionTime, setPredictionTime, setPredictions, setIsLoading);
     }, []);
-
-    const handleEdit = () => {
-        setIsEditing(true);
-    }
-
-    const handleConfirm = async () => {
-        setIsLoading(true);
-        await fetchPredictions(editableTime, setPredictionTime, setPredictions, setIsLoading);
-        setIsEditing(false);
-    }
-
-    const handleCancel = () => {
-        setIsEditing(false);
-    }
 
     return (
         <div className="main-container">
@@ -55,39 +39,15 @@ function MinHome() {
 
                 <p className="timestamp">
                     Showing Predictions for {predictionTime.toFormat('yyyy-M-dd')}&nbsp;
-                    {isEditing ? (
-                    <span> 
-                        <input
-                            type="time"
-                            value={editableTime}
-                            onChange={(e) => setEditableTime(e.target.value)}
-                            autoFocus
-                        />
-                        <span className="icon-group">
-                            {isLoading ?  (
-                            <span className="spinner-container">
-                                <FaSpinner className="spinner" />
-                            </span>
-                            ) : (
-                            <>
-                                <FaCheck className="icon confirm-icon" onClick={handleConfirm} />
-                                <FaTimes className="icon cancel-icon" onClick={handleCancel} />
-                            </>
-                            )}
-                        </span>
-                    </span>
-                    ) : (
-                    <>
+                    <EditableTime
+                        predictionTime={predictionTime}
+                        setPredictionTime={setPredictionTime}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
+                        setPredictions={setPredictions}
+                    >
                         {predictionTime.toFormat('h:mm:ss a')}
-                        {isLoading ? (
-                        <span className="spinner-container">
-                            <FaSpinner className="spinner" />
-                        </span>
-                        ) : (
-                            <FaEdit className="icon edit-icon" onClick={handleEdit } />
-                        )}
-                    </>
-                    )}
+                    </EditableTime>
                 </p>
                 <div className="garage">
                     <p></p>

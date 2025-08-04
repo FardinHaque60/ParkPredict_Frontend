@@ -3,21 +3,19 @@
 import './Home.css';
 import '../styles/HomeStyles.css';
 import TopBar from '../components/TopBar';
+import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchQuickPredictions, fetchPredictions } from '../../service/Api';
-import { FaArrowLeft, FaEdit, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
+import { fetchQuickPredictions } from '../../service/Api';
+import { FaArrowLeft } from 'react-icons/fa';
 import { PredictObj } from '../../service/ResponseObjs';
 import { DateTime } from 'luxon';
 
 function Home() {
     const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
     const [predictions, setPredictions] = useState(PredictObj);
-    // state for editing time
     const [isLoading, setIsLoading] = useState(true);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editableTime, setEditableTime] = useState(predictionTime.toFormat('HH:mm'));
 
     const getLiveFullness = async () => {
         // TODO make request to backend/database to get live scraped data
@@ -26,20 +24,6 @@ function Home() {
     useEffect(() => {
         fetchQuickPredictions(predictionTime, setPredictionTime, setPredictions, setIsLoading);
     }, []);
-
-    const handleEdit = () => {
-        setIsEditing(true);
-    }
-
-    const handleConfirm = async () => {
-        setIsLoading(true);
-        await fetchPredictions(editableTime, setPredictionTime, setPredictions, setIsLoading);
-        setIsEditing(false);
-    }
-
-    const handleCancel = () => {
-        setIsEditing(false);
-    }
 
     return (
         <div className="main-container">
@@ -67,39 +51,15 @@ function Home() {
                         <p className="column__name">Fullness at <b>6:28 AM</b></p>
                         <p className="column__name">
                             Fullness at&nbsp;
-                            {isEditing ? (
-                            <span> 
-                                <input
-                                    type="time"
-                                    value={editableTime}
-                                    onChange={(e) => setEditableTime(e.target.value)}
-                                    autoFocus
-                                />
-                                <span className="icon-group">
-                                    {isLoading ?  (
-                                    <span className="spinner-container">
-                                        <FaSpinner className="spinner" />
-                                    </span>
-                                    ) : (
-                                    <>
-                                        <FaCheck className="icon confirm-icon" onClick={handleConfirm} />
-                                        <FaTimes className="icon cancel-icon" onClick={handleCancel} />
-                                    </>
-                                    )}
-                                </span>
-                            </span>
-                            ) : (
-                            <>
+                            <EditableTime
+                                predictionTime={predictionTime}
+                                setPredictionTime={setPredictionTime}
+                                isLoading={isLoading}
+                                setIsLoading={setIsLoading}
+                                setPredictions={setPredictions}
+                            >
                                 <b>{predictionTime.toFormat('h:mm a')}</b>
-                                {isLoading ? (
-                                <span className="spinner-container">
-                                    <FaSpinner className="spinner" />
-                                </span>
-                                ) : (
-                                    <FaEdit className="icon edit-icon" onClick={handleEdit } />
-                                )}
-                            </>
-                            )}
+                            </EditableTime>
                         </p>
                     </div>
                 </div>
