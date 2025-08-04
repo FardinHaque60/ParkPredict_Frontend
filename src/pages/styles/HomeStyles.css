@@ -1,0 +1,278 @@
+/* shared styles used between MinHome and Home */
+.wrap {
+	/*max-width:400px;*/
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.sjsu-header {
+	padding: 1rem 0;
+}
+
+.sjsu-title {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-size: 143.75%;
+	line-height: 1.5;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-family: 'Times New Roman', serif;
+}
+
+.arrow-link {
+	display: inline-block;
+	margin-left: 0.5rem;
+	font-size: 1rem;
+}
+
+.sjsu-gradientbar {
+	display: block;
+	background: linear-gradient(90deg, #1c88f4 0%, #e5a823 73%) 100% 0 no-repeat, #0055a2;
+	background-size: 100% 10px, 100%;
+	padding-top: 10px;
+}
+
+.parking-title {
+	padding: 0;
+	font-size: 1.5rem;
+	margin-bottom: 0;
+}
+
+.parking-services {
+    display: flex;
+	padding: 0;
+	font-size: 1rem;
+	margin-top: 0;
+    gap: 0.25rem;
+}
+
+.timestamp {
+	padding: 0;
+	margin-top: 0;
+	font-size: .75rem;
+	line-height: 1;
+}
+
+/* shared styles for icons */
+
+.icon {
+	padding-left: 0.5em;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.confirm-icon {
+	color: #00a213;
+}
+
+.confirm-icon:hover {
+	color: #0ae623;
+}
+
+.cancel-icon {
+	color: #a82428;
+}
+
+.cancel-icon:hover {
+	color: #f08700;
+}
+
+.edit-icon {
+	color: #0055a2;
+}
+
+.edit-icon:hover {
+	color: #1c88f4;
+}
+
+.spinner-container {
+	padding-left: 0.5em;
+}
+
+/* This is the key part for the spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: #6b7280; /* gray-500 */
+}
+
+/* E| Garage */
+
+garage {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 1rem .5rem 1rem;
+	margin-bottom: 1rem;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #666666;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #666666;
+}
+
+.garage__name {
+	margin: 0;
+	font-size: 1.25rem;
+}
+
+.garage__text {
+	margin: 0;
+	font-size: .8rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.garage__address {
+	background-image: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-location-sjsu-blue-small.svg');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 16px;
+}
+
+.garage__fullness {
+	margin-top: -1.25rem;
+	font-size: 1.75rem;
+	line-height: 1;
+	text-align: right;
+}
+
+.garage__spots {
+	font-weight: bold;
+	font-size: 2rem;
+	line-height: 1;
+}
+
+
+/* O| Emergency Dropdown */
+.o-alert {
+	padding: 1rem;
+	margin: 1.5rem 0 2rem;
+}
+
+.o-alert p {
+	color: #0055a2;
+}
+
+.o-alert__panel::before {
+	content: ' ';
+	display: block;
+	float: left;
+	margin-right: .75rem;
+	width: 51px;
+	height: 53px;
+	background: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-informational-sjsu-blue.svg') left center no-repeat;
+}
+
+.o-alert__title {
+	color: white;
+	font-family: 'Nunito Sans', Verdana, sans-serif;
+	font-size: 1.2rem;
+	font-weight: 650;
+	margin: 0;
+}
+
+.o-alert__text {
+	color: white;
+	font-family: 'Nunito Sans', Verdana, sans-serif;
+	margin: 0;
+}
+
+
+/* RED ALERT PLACEHOLDER */
+
+.o-alert.u-color--red {
+	background-color: #a82428;
+}
+
+.o-alert.u-color--red p {
+	color: #ffffff;
+}
+
+.o-alert.u-color--red .o-alert__panel::before {
+	background-image: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-emergency-white.svg');
+	background-repeat: inherit;
+	background-position: inherit;
+}
+
+.o-alert.u-color--red a:link,
+.o-alert.u-color--red a:visited {
+	color: #ffffff;
+}
+
+.o-alert.u-color--yellow {
+	background-color: #e5a823;
+}
+
+.o-alert.u-color--yellow p {
+	color: black;
+}
+
+.o-alert.u-color--yellow .o-alert__panel::before {
+	background-image: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-emergency-black.svg');
+	background-repeat: inherit;
+	background-position: inherit;
+}
+
+.o-alert.u-color--gray {
+	background-color: #666666;
+}
+
+.o-alert.u-color--gray p {
+	color: #ffffff;
+}
+
+.o-alert.u-color--gray .o-alert__panel::before {
+	background-image: url('https://www.sjsu.edu/aspis/media/icons/ui/icon-informational-white.svg');
+	background-repeat: inherit;
+	background-position: inherit;
+}
+
+.o-alert.u-color--gray .o-alert__link {
+	color: #f7ca18;
+}
+
+/* O/ Emergency Dropdown */
+
+.panel {
+	background-image: linear-gradient(#ffffff, #f0f0f0);
+}
+
+garage.u-color--red {
+	border-top: #a82428 solid 1rem;
+	padding-top: 0.5rem;
+}
+
+garage.u-color--yellow {
+	border-top: #e5a823 solid 1rem;
+	padding-top: 0.5rem;
+}
+
+garage.u-color--green {
+	border-top: green solid 1rem;
+	padding-top: 0.5rem;
+}
+
+
+.u-bg--dark {
+	background-color: #0055a2;
+}
+
+.u-bg--dark a:link,
+.u-bg--dark a:visited {
+	color: #ffffff;
+}
+
+.u-lift {
+	margin-top: -1rem;
+}
