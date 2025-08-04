@@ -1,28 +1,59 @@
-// TODO add footer
+// TODO make requests to cron job to get live fullness data and add tool tips
+/* regular home view with live fullness and predictions */
 import './Home.css';
+import '../styles/HomeStyles.css';
+import TopBar from '../components/TopBar';
+
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchQuickPredictions, fetchPredictions } from '../../service/Api';
+import { FaArrowLeft, FaEdit, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
+import { PredictObj } from '../../service/ResponseObjs';
+import { DateTime } from 'luxon';
 
 function Home() {
+    const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
+    const [predictions, setPredictions] = useState(PredictObj);
+    // state for editing time
+    const [isLoading, setIsLoading] = useState(true);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editableTime, setEditableTime] = useState(predictionTime.toFormat('HH:mm'));
+
+    const getLiveFullness = async () => {
+        // TODO make request to backend/database to get live scraped data
+    };
+
+    useEffect(() => {
+        fetchQuickPredictions(predictionTime, setPredictionTime, setPredictions, setIsLoading);
+    }, []);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    }
+
+    const handleConfirm = async () => {
+        setIsLoading(true);
+        await fetchPredictions(editableTime, setPredictionTime, setPredictions, setIsLoading);
+        setIsEditing(false);
+    }
+
+    const handleCancel = () => {
+        setIsEditing(false);
+    }
+
     return (
         <div className="main-container">
-            {/* header */}
-            <header className="sjsu-header u-bg--dark" role="banner">
-                <div className="wrap">
-                    <a className="sjsu-title" href="https://www.sjsu.edu/" target="_blank" rel="noopener noreferrer">
-                        SJSU
-                    </a>
-                </div>
-            </header>
-            <span className="sjsu-gradientbar"></span>
-            <main className="sjsu-main"></main>
+            <TopBar />
             {/* main content */}
             <div className="wrap">
                 <h1 className="parking-title">
-                    Parking Garage Fullness
+                    Parking Garage Fullness 
+                    <Link className="arrow-link" to="/"><FaArrowLeft /></Link>
                 </h1>
                 {/* column headers */}
                 <div className="garages__header">
                     <div>
-                        <h2 className="parking-services">
+                        <h2 className="header-links">
                             <a href="https://www.sjsu.edu/parking/index.php" target="_blank" rel="noopener noreferrer">
                                 Parking Services
                             </a>
@@ -33,10 +64,43 @@ function Home() {
                         </h2>
                     </div>
                     <div className="columns">
-                        {/* TODO add refresh icon */}
                         <p className="column__name">Fullness at <b>6:28 AM</b></p>
-                        {/* TODO convert to field and add tooltip */}
-                        <p className="column__name">Fullness at <b>9:28 AM</b></p>
+                        <p className="column__name">
+                            Fullness at&nbsp;
+                            {isEditing ? (
+                            <span> 
+                                <input
+                                    type="time"
+                                    value={editableTime}
+                                    onChange={(e) => setEditableTime(e.target.value)}
+                                    autoFocus
+                                />
+                                <span className="icon-group">
+                                    {isLoading ?  (
+                                    <span className="spinner-container">
+                                        <FaSpinner className="spinner" />
+                                    </span>
+                                    ) : (
+                                    <>
+                                        <FaCheck className="icon confirm-icon" onClick={handleConfirm} />
+                                        <FaTimes className="icon cancel-icon" onClick={handleCancel} />
+                                    </>
+                                    )}
+                                </span>
+                            </span>
+                            ) : (
+                            <>
+                                <b>{predictionTime.toFormat('h:mm a')}</b>
+                                {isLoading ? (
+                                <span className="spinner-container">
+                                    <FaSpinner className="spinner" />
+                                </span>
+                                ) : (
+                                    <FaEdit className="icon edit-icon" onClick={handleEdit } />
+                                )}
+                            </>
+                            )}
+                        </p>
                     </div>
                 </div>
                 {/* start garages */}
@@ -49,7 +113,10 @@ function Home() {
                         </a>
                         <span className="garage__stats">
                             <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">20 %</span>
+                            <span className="garage__percentage">
+                                {}
+                                {Math.floor(predictions["South Garage"])} %
+                            </span>
                         </span>
                     </p>
                     <p></p>
@@ -61,7 +128,7 @@ function Home() {
                         </a>
                         <span className="garage__stats">
                             <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">20 %</span>
+                            <span className="garage__percentage">{Math.floor(predictions["West Garage"])} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -73,7 +140,7 @@ function Home() {
                         </a>
                         <span className="garage__stats">
                             <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">20 %</span>
+                            <span className="garage__percentage">{Math.floor(predictions["North Garage"])} %</span>
                         </span>
                     </p>
                     <p></p>
