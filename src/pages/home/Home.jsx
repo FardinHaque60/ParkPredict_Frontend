@@ -3,6 +3,7 @@
 import './Home.css';
 import '../styles/HomeStyles.css';
 import TopBar from '../components/TopBar';
+import Footer from '../components/Footer';
 import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
@@ -133,6 +134,7 @@ function Home() {
                     </a>
                 </p>
             </div>
+            <Footer />
         </div>
     );
 }

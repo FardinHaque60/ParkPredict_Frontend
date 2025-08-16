@@ -1,4 +1,8 @@
 /* shared styles used between MinHome and Home */
+.main-container {
+	padding-bottom: 100px;
+}
+
 .wrap {
 	/*max-width:400px;*/
 	max-width: 800px;

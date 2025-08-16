@@ -1,6 +1,7 @@
 /* minimal home display for initial load, just shows predicted values */
 import '../styles/HomeStyles.css';
 import TopBar from '../components/TopBar';
+import Footer from '../components/Footer';
 import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
@@ -102,6 +103,7 @@ function MinHome() {
                     </a>
                 </p>
             </div>
+            <Footer />
         </div>
     );
 }
