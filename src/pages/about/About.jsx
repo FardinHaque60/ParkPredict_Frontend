@@ -1,7 +1,6 @@
-import './DataViz.css';
 import '../styles/General.css';
 
-function DataViz() {
+function About() {
   return (
     <div className="main-container">
             {/* header */}
@@ -17,9 +16,9 @@ function DataViz() {
             {/* main content */}
             <div className="wrap">
                 <h1 className="parking-title">
-                    Data Visualization Coming Soon!
+                    About Page Coming Soon!
                 </h1>
-                <div className="return-link">
+                <div>
                     <h2 className="parking-services">
                         <a href="/">
                             Return to dashboard
@@ -31,4 +30,4 @@ function DataViz() {
   );
 }
 
-export default DataViz;
+export default About;
