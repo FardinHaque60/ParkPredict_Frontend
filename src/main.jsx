@@ -6,8 +6,8 @@ import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import Home from './pages/home/Home'
 import MinHome from './pages/min-home/MinHome'
-import DataViz from './pages/data_viz/DataViz'
-import Policy from './pages/sms_policy/Policy'
+import DataViz from './pages/data-viz/DataViz'
+import Policy from './pages/sms-policy/Policy'
 import About from './pages/about/About'
 
 createRoot(document.getElementById('root')).render(
