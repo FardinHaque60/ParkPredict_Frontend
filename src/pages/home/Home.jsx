@@ -49,7 +49,7 @@ function Home() {
                         </h2>
                     </div>
                     <div className="columns">
-                        <p className="column__name">Fullness at <b>6:28 AM</b></p>
+                        <p className="column__name">Fullness at <b>HH:MM</b></p>
                         <p className="column__name">
                             Fullness at&nbsp;
                             <EditableTime
@@ -73,11 +73,8 @@ function Home() {
                             377 S. 7th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">
-                                {}
-                                {Math.floor(predictions["South Garage"])} %
-                            </span>
+                            <span className="garage__percentage">XX %</span>
+                            <span className="garage__percentage">{predictions["South Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -88,8 +85,8 @@ function Home() {
                             350 S. 4th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">{Math.floor(predictions["West Garage"])} %</span>
+                            <span className="garage__percentage">XX %</span>
+                            <span className="garage__percentage">{predictions["West Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -100,8 +97,8 @@ function Home() {
                             65 S. 10th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">34 %</span>
-                            <span className="garage__percentage">{Math.floor(predictions["North Garage"])} %</span>
+                            <span className="garage__percentage">XX %</span>
+                            <span className="garage__percentage">{predictions["North Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -112,7 +109,7 @@ function Home() {
                             1278 S. 10th Street, San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">34 %</span>
+                            <span className="garage__percentage">XX %</span>
                             <span className="garage__percentage">N/A</span>
                         </span>
                     </p>

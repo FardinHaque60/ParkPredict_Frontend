@@ -47,7 +47,7 @@ function MinHome() {
                         setIsLoading={setIsLoading}
                         setPredictions={setPredictions}
                     >
-                        {predictionTime.toFormat('h:mm:ss a')}
+                        <b>{predictionTime.toFormat('h:mm:ss a')}</b>
                     </EditableTime>
                 </p>
                 <div className="garage">
@@ -57,7 +57,7 @@ function MinHome() {
                         <a className="garage__address" href="https://www.google.com/maps/place/377 S. 7th St., San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
                             377 S. 7th St., San Jose, CA 95112
                         </a>
-                        <span className="garage__fullness">{Math.floor(predictions["South Garage"])} %</span>
+                        <span className="garage__fullness">{predictions["South Garage"]} %</span>
                     </p>
                     <p></p>
 
@@ -66,7 +66,7 @@ function MinHome() {
                         <a className="garage__address" href="https://www.google.com/maps/place/350 S. 4th St., San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
                             350 S. 4th St., San Jose, CA 95112
                         </a>
-                        <span className="garage__fullness">{Math.floor(predictions["West Garage"])} %</span>
+                        <span className="garage__fullness">{predictions["West Garage"]} %</span>
                     </p>
                     <p></p>
 
@@ -75,7 +75,7 @@ function MinHome() {
                         <a className="garage__address" href="https://www.google.com/maps/place/65 S. 10th St., San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
                             65 S. 10th St., San Jose, CA 95112
                         </a>
-                        <span className="garage__fullness">{Math.floor(predictions["North Garage"])} %</span>
+                        <span className="garage__fullness">{predictions["North Garage"]} %</span>
                     </p>
                     <p></p>
 

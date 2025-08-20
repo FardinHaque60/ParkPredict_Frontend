@@ -44,6 +44,47 @@ function Policy() {
                     find available parking. We are committed to ensuring transparency and protecting your privacy. Our service is strictly user-initiated and 
                     operates on a request-response basis. For more information about our mission, please visit our <a href="/about"> about page</a>.
                 </p>
+
+                <h2> Consent to Receive SMS Messages </h2>
+                <p> 
+                    To utilize our service, you must first provide explicit consent to receive a one-time SMS response. Communication is initiated solely by you, the user. 
+                    By checking the box below, you are providing your express written consent and agree to the following terms: You acknowledge and consent that by sending 
+                    a text message to our SMS number, you will receive a single, automated SMS response containing the requested parking garage predictions. 
+                    You understand that this service is user-initiated. You will only receive a message from us as a direct and immediate response to your specific request.
+                    <p>
+                        <label style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+                            <input type="checkbox" style={{ marginRight: '1em' }} onClick={handleCheckboxChange}/>
+                            I agree to receive a one-time text message from ParkPredict with parking garage prediction information in response to my direct SMS inquiry. 
+                        </label>
+                        Upon hitting submit below, you will be provided with the SMS number to which you can send your request for parking predictions.
+                        <p></p>
+                        <button
+                            type="button"
+                            disabled={!isChecked}
+                            style={{
+                                backgroundColor: isChecked ? '#007bff' : '#ccc',
+                                color: 'white',
+                                padding: '0.5rem 1rem',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: isChecked ? 'pointer' : 'not-allowed',
+                                marginBottom: '1rem'
+                            }}
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
+                    </p>
+                </p>
+                {submitted && (
+                    <div style={{ padding: '1rem', background: '#f5f5f5', borderRadius: '6px' }}>
+                        <h2>Get Started</h2>
+                        <p>
+                            Text <b>"hello"</b> to the phone number found <a href="https://docs.google.com/document/d/1H2TS5vrcon_N_KF47SQpuabw3oAgYb-Zlpf5U2uiN8M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> to get started.
+                        </p>
+                    </div>
+                )}
+
                 <div>
                     <h2> Data Privacy and User Information </h2>
                     <p> 
@@ -116,46 +157,6 @@ function Policy() {
                             </li>
                         </ul>
                     </p>
-
-                    <h2> Consent to Receive SMS Messages </h2>
-                    <p> 
-                        To utilize our service, you must first provide explicit consent to receive a one-time SMS response. Communication is initiated solely by you, the user. 
-                        By checking the box below, you are providing your express written consent and agree to the following terms: You acknowledge and consent that by sending 
-                        a text message to our SMS number, you will receive a single, automated SMS response containing the requested parking garage predictions. 
-                        You understand that this service is user-initiated. You will only receive a message from us as a direct and immediate response to your specific request.
-                        <p>
-                            <label style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                                <input type="checkbox" style={{ marginRight: '1em' }} onClick={handleCheckboxChange}/>
-                                I agree to receive a one-time text message from SjsuParkPredict with parking garage prediction information in response to my direct SMS inquiry. 
-                            </label>
-                            Upon hitting submit below, you will be provided with the SMS number to which you can send your request for parking predictions.
-                            <p></p>
-                            <button
-                                type="button"
-                                disabled={!isChecked}
-                                style={{
-                                    backgroundColor: isChecked ? '#007bff' : '#ccc',
-                                    color: 'white',
-                                    padding: '0.5rem 1rem',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: isChecked ? 'pointer' : 'not-allowed',
-                                    marginBottom: '1rem'
-                                }}
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </button>
-                        </p>
-                    </p>
-                    {submitted && (
-                        <div style={{ padding: '1rem', background: '#f5f5f5', borderRadius: '6px' }}>
-                            <h2>Get Started</h2>
-                            <p>
-                                Text <b>"hello"</b> to the phone number found <a href="https://docs.google.com/document/d/1H2TS5vrcon_N_KF47SQpuabw3oAgYb-Zlpf5U2uiN8M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> to get started.
-                            </p>
-                        </div>
-                    )}
                 </div>
                 <div className="return-link">
                     <h2 className="parking-services">
