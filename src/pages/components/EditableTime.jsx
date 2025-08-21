@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { fetchPredictions } from "../../service/Api";
 import { FaEdit, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function EditableTime({children, predictionTime, setPredictionTime, isLoading, setIsLoading, setPredictions}) {
     const [isEditing, setIsEditing] = useState(false);
@@ -51,7 +52,7 @@ function EditableTime({children, predictionTime, setPredictionTime, isLoading, s
                     <FaSpinner className="spinner" />
                 </span>
                 ) : (
-                    <FaEdit className="icon edit-icon" onClick={handleEdit } />
+                    <Link className="icon edit-icon" onClick={handleEdit}>Edit Prediction Time <FaEdit/></Link>
                 )}
             </>
             )}
