@@ -15,9 +15,12 @@ function MinHome() {
     const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
     const [predictions, setPredictions] = useState(PredictObj);
     const [isLoading, setIsLoading] = useState(true);
+    const [fridayWeekend, setFridayWeekend] = useState(false); // Indicates if the current day is Friday or weekend
 
     useEffect(() => {
         fetchQuickPredictions(predictionTime, setPredictionTime, setPredictions, setIsLoading);
+        const day = predictionTime.weekday;
+        setFridayWeekend(day === 5 || day === 6 || day === 7);
     }, []);
 
     return (
@@ -37,19 +40,28 @@ function MinHome() {
                         Stats for nerds
                     </a>
                 </h2>
-
-                <p className="timestamp">
+                <div className="timestamp manual-p">
                     Showing Predictions for {predictionTime.toFormat('yyyy-M-dd')}&nbsp;
-                    <EditableTime
-                        predictionTime={predictionTime}
-                        setPredictionTime={setPredictionTime}
-                        isLoading={isLoading}
-                        setIsLoading={setIsLoading}
-                        setPredictions={setPredictions}
-                    >
-                        <b>{predictionTime.toFormat('h:mm:ss a')}</b>
-                    </EditableTime>
-                </p>
+                        <EditableTime
+                            predictionTime={predictionTime}
+                            setPredictionTime={setPredictionTime}
+                            isLoading={isLoading}
+                            setIsLoading={setIsLoading}
+                            setPredictions={setPredictions}
+                        >
+                            <b>{predictionTime.toFormat('h:mm:ss a')}</b>
+                        </EditableTime>
+                    {fridayWeekend && <div className="o-alert u-color--yellow">
+                        <div className="o-alert__panel">
+                        </div>
+                        <p className="o-alert__title">
+                        Prediction Availability
+                        </p>
+                        <p className="o-alert__text">
+                        Predictions are most accurate Monday - Thursday. All garages are generally available on Fridays and weekends, so predictions are not necessary.
+                        </p>
+                    </div>}
+                </div>
                 <div className="garage">
                     <p></p>
                     <h2 className="garage__name">South Garage</h2>

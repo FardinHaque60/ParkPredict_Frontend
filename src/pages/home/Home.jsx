@@ -22,9 +22,13 @@ function Home() {
     const [predictions1, setPredictions1] = useState(PredictObj);
     const [isLoading1, setIsLoading1] = useState(true);
 
+    const [fridayWeekend, setFridayWeekend] = useState(false);
+
     useEffect(() => {
         fetchQuickPredictions(predictionTime.minus({ minutes: 30 }), setPredictionTime, setPredictions, setIsLoading);
         fetchQuickPredictions(predictionTime1, setPredictionTime1, setPredictions1, setIsLoading1);
+        const day = predictionTime.weekday;
+        setFridayWeekend(day === 5 || day === 6 || day === 7);
     }, []);
 
     return (
@@ -36,6 +40,16 @@ function Home() {
                     Parking Garage Fullness 
                     <Link className="arrow-link" to="/"><FaArrowLeft /></Link>
                 </h1>
+                {fridayWeekend && <div className="o-alert u-color--yellow o-alert-alt">
+                    <div className="o-alert__panel">
+                    </div>
+                    <p className="o-alert__title">
+                    Prediction Availability
+                    </p>
+                    <p className="o-alert__text">
+                    Predictions are most accurate Monday - Thursday. All garages are generally available on Fridays and weekends, so predictions are not necessary.
+                    </p>
+                </div>}
                 {/* column headers */}
                 <div className="garages__header">
                     <div>
