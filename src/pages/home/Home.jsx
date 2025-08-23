@@ -7,7 +7,7 @@ import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchQuickPredictions, fetchPredictions } from '../../service/Api';
+import { fetchQuickPredictions } from '../../service/Api';
 import { FaArrowLeft } from 'react-icons/fa';
 import { PredictObj } from '../../service/ResponseObjs';
 import { DateTime } from 'luxon';
@@ -23,8 +23,7 @@ function Home() {
     const [isLoading1, setIsLoading1] = useState(true);
 
     useEffect(() => {
-        const formattedTime = predictionTime.toFormat('HH:mm');
-        fetchPredictions(formattedTime, setPredictionTime, setPredictions, setIsLoading);
+        fetchQuickPredictions(predictionTime.minus({ minutes: 30 }), setPredictionTime, setPredictions, setIsLoading);
         fetchQuickPredictions(predictionTime1, setPredictionTime1, setPredictions1, setIsLoading1);
     }, []);
 
