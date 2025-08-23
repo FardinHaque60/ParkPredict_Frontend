@@ -1,4 +1,3 @@
-// TODO make requests to cron job to get live fullness data and add tool tips
 /* regular home view with live fullness and predictions */
 import './Home.css';
 import '../styles/HomeStyles.css';
@@ -8,22 +7,25 @@ import EditableTime from '../components/EditableTime';
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchQuickPredictions } from '../../service/Api';
+import { fetchQuickPredictions, fetchPredictions } from '../../service/Api';
 import { FaArrowLeft } from 'react-icons/fa';
 import { PredictObj } from '../../service/ResponseObjs';
 import { DateTime } from 'luxon';
 
 function Home() {
+    // variables for left hand side predictions column
     const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
     const [predictions, setPredictions] = useState(PredictObj);
     const [isLoading, setIsLoading] = useState(true);
-
-    const getLiveFullness = async () => {
-        // TODO make request to backend/database to get live scraped data
-    };
+    // variables for right hand side predictions column
+    const [predictionTime1, setPredictionTime1] = useState(DateTime.now().setZone("America/Los_Angeles"));
+    const [predictions1, setPredictions1] = useState(PredictObj);
+    const [isLoading1, setIsLoading1] = useState(true);
 
     useEffect(() => {
-        fetchQuickPredictions(predictionTime, setPredictionTime, setPredictions, setIsLoading);
+        const formattedTime = predictionTime.toFormat('HH:mm');
+        fetchPredictions(formattedTime, setPredictionTime, setPredictions, setIsLoading);
+        fetchQuickPredictions(predictionTime1, setPredictionTime1, setPredictions1, setIsLoading1);
     }, []);
 
     return (
@@ -49,7 +51,6 @@ function Home() {
                         </h2>
                     </div>
                     <div className="columns">
-                        <p className="column__name">Fullness at <b>HH:MM</b></p>
                         <p className="column__name">
                             Fullness at&nbsp;
                             <EditableTime
@@ -60,6 +61,18 @@ function Home() {
                                 setPredictions={setPredictions}
                             >
                                 <b>{predictionTime.toFormat('h:mm a')}</b>
+                            </EditableTime>
+                        </p>
+                        <p className="column__name">
+                            Fullness at&nbsp;
+                            <EditableTime
+                                predictionTime={predictionTime1}
+                                setPredictionTime={setPredictionTime1}
+                                isLoading={isLoading1}
+                                setIsLoading={setIsLoading1}
+                                setPredictions={setPredictions1}
+                            >
+                                <b>{predictionTime1.toFormat('h:mm a')}</b>
                             </EditableTime>
                         </p>
                     </div>
@@ -73,8 +86,8 @@ function Home() {
                             377 S. 7th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">XX %</span>
                             <span className="garage__percentage">{predictions["South Garage"]} %</span>
+                            <span className="garage__percentage">{predictions1["South Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -85,8 +98,8 @@ function Home() {
                             350 S. 4th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">XX %</span>
                             <span className="garage__percentage">{predictions["West Garage"]} %</span>
+                            <span className="garage__percentage">{predictions1["West Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -97,8 +110,8 @@ function Home() {
                             65 S. 10th St., San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">XX %</span>
                             <span className="garage__percentage">{predictions["North Garage"]} %</span>
+                            <span className="garage__percentage">{predictions1["North Garage"]} %</span>
                         </span>
                     </p>
                     <p></p>
@@ -109,7 +122,7 @@ function Home() {
                             1278 S. 10th Street, San Jose, CA 95112
                         </a>
                         <span className="garage__stats">
-                            <span className="garage__percentage">XX %</span>
+                            <span className="garage__percentage">N/A</span>
                             <span className="garage__percentage">N/A</span>
                         </span>
                     </p>
