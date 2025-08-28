@@ -8,6 +8,11 @@ const apiClient = axios.create({
   },
 });
 
+// data viz endpoints
+export const fetchData = async (garage, day) => {
+  return apiClient.get(`/data?garage=${garage}&day=${day}`);
+};
+
 // predict endpoints expect a date param
 export const quickPredictRequest = (timestamp) => {
   return apiClient.get(`/quick_predict?timestamp=${timestamp}`);
