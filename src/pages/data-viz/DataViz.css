@@ -19,7 +19,7 @@
     gap: 1em;
 }
 
-.icon {
+.data-icon {
     padding-left: 0em;
 	cursor: pointer;
 	transition: transform 0.2s ease;

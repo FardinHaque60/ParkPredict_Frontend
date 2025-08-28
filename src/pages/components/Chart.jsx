@@ -163,16 +163,16 @@ function Chart({ garage }) {
             <div className="chart-controls">
                 {/* date selection */}
                 <div className="date-toggle">
-                    <FaArrowLeft className="icon right-left-arrows" onClick={handlePrevDay} />
+                    <FaArrowLeft className="data-icon right-left-arrows" onClick={handlePrevDay} />
                     <p style={{ textAlign: 'center' }}>{currentDay.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' })}</p>
-                    <FaArrowRight className="icon right-left-arrows" onClick={handleNextDay} />
+                    <FaArrowRight className="data-icon right-left-arrows" onClick={handleNextDay} />
                 </div>
 
                 {/* checkboxes */}
                 <div className="checkbox-group">
                     <p className="actual-checkbox">
                         <input
-                            className="icon"
+                            className="data-icon"
                             type="checkbox"
                             name="realData"
                             checked={datasetVisibility.realData}
@@ -182,7 +182,7 @@ function Chart({ garage }) {
                     </p>
                     <p className="predicted-checkbox">
                         <input
-                            className="icon"
+                            className="data-icon"
                             type="checkbox"
                             name="predictionData"
                             checked={datasetVisibility.predictionData}
