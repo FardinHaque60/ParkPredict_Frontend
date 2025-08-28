@@ -117,8 +117,7 @@ function About() {
                                 border: 'none',
                                 borderRadius: '4px',
                                 cursor: formData.message ? 'pointer' : 'not-allowed',
-                                marginBottom: '1rem',
-                                fontSize: '1rem'
+                                marginBottom: '1rem'
                             }}
                             disabled={!formData.message}
                         >
