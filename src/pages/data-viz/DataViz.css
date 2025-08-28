@@ -1,6 +1,44 @@
-.data-viz {
+.chart-controls {
+    margin-bottom: 1em;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 2em;
+}
+
+.date-toggle {
+    display: flex;
     align-items: center;
-    padding: 20px;
+    gap: 0.5em;
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.icon {
+    padding-left: 0em;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.right-left-arrows {
+    color: #0055a2;
+}
+
+.right-left-arrows:hover {
+    color: #1c88f4;
+}
+
+.actual-checkbox {
+    padding-right: 0.35em;
+    background-color: rgba(255, 99, 132, 0.6);
+}
+
+.predicted-checkbox {
+    padding-right: 0.35em;
+    background-color: rgba(54, 162, 235, 0.6);
 }
