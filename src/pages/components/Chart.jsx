@@ -163,11 +163,14 @@ function Chart({ garage }) {
             legend: { display: false }
         },
     };
-
     return (
         <div>
             {/* chart render */}
-            <Scatter data={chartData} options={options}/>
+            {chartData.datasets && chartData.datasets.length > 0 && chartData.datasets.some(ds => ds.data && ds.data.length > 0) ? (
+                <Scatter data={chartData} options={options}/>
+            ) : (
+                <p style={{ textAlign: 'center', margin: '2rem 0' }}>No data for this date, try another day.</p>
+            )}
             {/* chart controls */}
             <div className="chart-controls">
                 {/* date selection */}
