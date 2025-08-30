@@ -144,8 +144,17 @@ function Chart({ garage }) {
                 font: { size: 16 }
             },
             zoom: { 
-                pan: { enabled: true, mode: 'xy' }, 
-                zoom: { wheel: { enabled: true }, mode: 'xy' },
+                pan: { 
+                    enabled: true, 
+                    mode: 'xy',
+                    overScaleMode: 'xy',
+                }, 
+                zoom: { 
+                    wheel: { enabled: true }, 
+                    pinch: { enabled: true },
+                    drag: { enabled: true },  
+                    mode: 'xy',
+                },
                 limits: {
                   x: { min: minX, max: maxX },
                   y: { min: 0, max: 110 },
