@@ -80,7 +80,7 @@ function Policy() {
                     <div style={{ padding: '1rem', background: '#f5f5f5', borderRadius: '6px' }}>
                         <h2>Get Started</h2>
                         <p>
-                            Text <b>"hello"</b> to the phone number found <a href="https://docs.google.com/document/d/1H2TS5vrcon_N_KF47SQpuabw3oAgYb-Zlpf5U2uiN8M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> to get started.
+                            Text <b>"hello"</b> to <b>+1 (877) 342-0680</b>, see more policy information <a href="https://docs.google.com/document/d/1H2TS5vrcon_N_KF47SQpuabw3oAgYb-Zlpf5U2uiN8M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.
                         </p>
                     </div>
                 )}
