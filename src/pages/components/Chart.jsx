@@ -147,12 +147,10 @@ function Chart({ garage }) {
                 pan: { 
                     enabled: true, 
                     mode: 'xy',
-                    overScaleMode: 'xy',
                 }, 
                 zoom: { 
                     wheel: { enabled: true }, 
                     pinch: { enabled: true },
-                    drag: { enabled: true },  
                     mode: 'xy',
                 },
                 limits: {
