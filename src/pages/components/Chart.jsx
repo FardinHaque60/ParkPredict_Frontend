@@ -174,7 +174,9 @@ function Chart({ garage }) {
                 {/* date selection */}
                 <div className="date-toggle">
                     <FaArrowLeft className="data-icon right-left-arrows" onClick={handlePrevDay} />
-                    <p style={{ textAlign: 'center' }}>{currentDay.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' })}</p>
+                    <p style={{ textAlign: 'center' }}>
+                        {currentDay.toFormat('cccc, LLL d, yyyy')}
+                    </p>
                     <FaArrowRight className="data-icon right-left-arrows" onClick={handleNextDay} />
                 </div>
 
