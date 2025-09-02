@@ -15,7 +15,7 @@ import {
 import 'chartjs-adapter-date-fns';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { DateTime } from 'luxon';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaSpinner } from 'react-icons/fa';
 
 // Register all the necessary components for Chart.js
 ChartJS.register(
@@ -31,7 +31,8 @@ ChartJS.register(
 );
 
 function Chart({ garage }) {
-    const GARAGE_NAME = garage; // TODO update to passed variable
+    const [loading, setLoading] = useState(true);
+    const GARAGE_NAME = garage;
     const [actualData, setActualFullness] = useState({
         label: 'Actual Data',
         data: [],
@@ -55,6 +56,7 @@ function Chart({ garage }) {
     const [currentDay, setCurrentDay] = useState(DateTime.now().setZone("America/Los_Angeles"));
 
     const fetchDataForDate = async (date) => {
+        setLoading(true);
         try {
             const response = await fetchData(GARAGE_NAME, date.toFormat("yyyy-M-d"));
             const actual_data = response.data.actual_data;
@@ -86,6 +88,8 @@ function Chart({ garage }) {
             }));
         } catch (error) {
             console.error("Error fetching initial data:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -164,7 +168,11 @@ function Chart({ garage }) {
     return (
         <div>
             {/* chart render */}
-            {chartData.datasets && chartData.datasets.length > 0 && chartData.datasets.some(ds => ds.data && ds.data.length > 0) ? (
+            {loading ? (
+                <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+                    <FaSpinner className="spinner" />
+                </div>
+            ) : chartData.datasets && chartData.datasets.length > 0 && chartData.datasets.some(ds => ds.data && ds.data.length > 0) ? (
                 <Scatter data={chartData} options={options}/>
             ) : (
                 <p style={{ textAlign: 'center', margin: '2rem 0' }}>No data for this date, try another day.</p>
