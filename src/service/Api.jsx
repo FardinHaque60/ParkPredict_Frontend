@@ -1,5 +1,9 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -12,6 +16,22 @@ const apiClient = axios.create({
 export const fetchData = async (garage, day) => {
   return apiClient.get(`/data?garage=${garage}&day=${day}`);
 };
+
+export const fetchSouthCampusPrediction = async () => {
+  const { data, error } = await supabase
+    .from('people_prediction_south_campus')
+    .select('*')
+    .order('id', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error) {
+    console.error("Error fetching South Campus prediction:", error);
+    throw error;
+  }
+
+  return data;
+}
 
 // predict endpoints expect a date param
 export const quickPredictRequest = (timestamp) => {
