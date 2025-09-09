@@ -10,6 +10,7 @@ import { PredictObj } from '../../service/ResponseObjs';
 import { fetchQuickPredictions } from '../../service/Api';
 import { DateTime } from 'luxon';
 import { FaArrowRight } from 'react-icons/fa';
+import SouthCampusPrediction from '../components/SouthCampusPrediction';
 
 function MinHome() {
     const [predictionTime, setPredictionTime] = useState(DateTime.now().setZone("America/Los_Angeles"));
@@ -90,14 +91,7 @@ function MinHome() {
                         <span className="garage__fullness">{predictions["North Garage"]} %</span>
                     </p>
                     <p></p>
-
-                    <h2 className="garage__name">South Campus Garage</h2>
-                    <p className="garage__text">
-                        <a className="garage__address" href="https://www.google.com/maps/place/1278 S. 10th Street, San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
-                            1278 S. 10th Street, San Jose, CA 95112
-                        </a>
-                        <span className="garage__fullness">N/A</span>
-                    </p>
+                    <SouthCampusPrediction />
                     <p></p>
                 </div>
                 <h2>Parking Shuttles</h2>

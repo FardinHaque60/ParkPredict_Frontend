@@ -294,3 +294,38 @@ garage.u-color--green {
 .u-lift {
 	margin-top: -1rem;
 }
+
+.beta-flag {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5em;
+	padding-right: 25%;
+}
+
+.beta-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5em;
+  border-radius: 20%;
+  background-color: white; 
+  border-color: #007bff;
+  border-width: 0.05em;
+  border-style: solid;
+  color: white;      
+  font-size: 0.65em;
+  color: #007bff;
+}
+
+.people-prediction {
+	display: flex;
+	flex-direction: column;
+}
+
+.prediction-stop {
+	font-size: 0.60em;
+	margin-top: 0.5em;
+	padding-right: 0.25em;
+	color: #555555;
+}

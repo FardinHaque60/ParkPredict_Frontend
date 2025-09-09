@@ -11,6 +11,7 @@ import { fetchQuickPredictions } from '../../service/Api';
 import { FaArrowLeft } from 'react-icons/fa';
 import { PredictObj } from '../../service/ResponseObjs';
 import { DateTime } from 'luxon';
+import SouthCampusPrediction from '../components/SouthCampusPrediction';
 
 function Home() {
     // variables for left hand side predictions column
@@ -129,16 +130,7 @@ function Home() {
                     </p>
                     <p></p>
 
-                    <h2 className="garage__name">South Campus Garage</h2>
-                    <p className="garage__section">
-                        <a className="garage__address" href="https://www.google.com/maps/place/1278 S. 10th Street, San Jose, CA 95112" target="_blank" rel="noopener noreferrer">
-                            1278 S. 10th Street, San Jose, CA 95112
-                        </a>
-                        <span className="garage__stats">
-                            <span className="garage__percentage">N/A</span>
-                            <span className="garage__percentage">N/A</span>
-                        </span>
-                    </p>
+                    <SouthCampusPrediction />
                     <p></p>
                 </div>
                 {/* end garages */}
