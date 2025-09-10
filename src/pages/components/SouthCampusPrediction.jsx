@@ -46,10 +46,9 @@ function SouthCampusPrediction() {
                 <FaInfoCircle
                     data-tooltip-id="info-tooltip"
                     data-tooltip-content="Predicting number of people in line at shuttle stop based on rate of change of garage fullness."
-                    className="text-blue-500 cursor-pointer text-xl"
                 />
 
-                <Tooltip id="info-tooltip" place="right" effect="solid" />
+                <Tooltip style = {{ fontSize: '1em', maxWidth: '80%' }} id="info-tooltip" place="right" effect="solid" />
             </p>
             <h2 className="garage__name beta-flag">
                 South Campus Garage Shuttle Line

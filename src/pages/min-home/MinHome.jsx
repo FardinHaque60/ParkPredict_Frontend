@@ -42,7 +42,7 @@ function MinHome() {
                     </a>
                 </h2>
                 <div className="timestamp manual-p">
-                    Showing Predictions for {predictionTime.toFormat('yyyy-M-dd')}&nbsp;
+                    Showing Predictions for {predictionTime.toFormat('yyyy-M-d')}&nbsp;
                         <EditableTime
                             predictionTime={predictionTime}
                             setPredictionTime={setPredictionTime}

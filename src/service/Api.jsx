@@ -17,6 +17,10 @@ export const fetchData = async (garage, day) => {
   return apiClient.get(`/data?garage=${garage}&day=${day}`);
 };
 
+export const fetchSouthCampusGarageData = async (endpoint, day) => {
+  return apiClient.get(`/${endpoint}?day=${day}`);
+};
+
 export const fetchSouthCampusPrediction = async () => {
   const { data, error } = await supabase
     .from('people_prediction_south_campus')
