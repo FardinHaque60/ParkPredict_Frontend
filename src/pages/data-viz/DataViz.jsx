@@ -1,6 +1,7 @@
 import './DataViz.css';
 import '../styles/General.css';
 import Chart from '../components/Chart';
+import Chart_1 from '../components/Chart_1';
 
 function DataViz() {
     return (
@@ -23,6 +24,18 @@ function DataViz() {
                 <Chart garage="North Garage" />
                 <Chart garage="West Garage" />
                 <Chart garage="South Garage" />
+                <hr></hr>
+                <h2 className="south-campus-title"> South Campus Graphs <span className="beta-badge">Beta</span></h2>
+                <Chart_1 
+                    chartType="southCampusData" 
+                    graphLabel="South Campus Garage Fullness" 
+                    y_axis_label="Fullness (%)"
+                />
+                <Chart_1 
+                    chartType="southCampusPredictions" 
+                    graphLabel="South Campus Garage Predicted Shuttle Line" 
+                    y_axis_label="People Count"
+                />
                 <div className="return-link">
                     <h2 className="parking-services">
                         <a href="/">
