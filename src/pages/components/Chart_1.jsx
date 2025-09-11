@@ -40,7 +40,7 @@ function Chart_1({ chartType, graphLabel, y_axis_label }) {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({
-        label: 'Actual Data',                        // TODO update
+        label: 'Data',
         data: [],
         backgroundColor: 'rgba(255, 99, 132, 0.6)',
         borderColor: 'rgba(255, 99, 132, 1)',
@@ -132,13 +132,13 @@ function Chart_1({ chartType, graphLabel, y_axis_label }) {
         <div>
             {/* chart render */}
             {loading ? (
-                <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+                <div style={{ textAlign: 'center', paddingLeft: '2rem' }}>
                     <FaSpinner className="spinner" />
                 </div>
             ) : chartData.datasets && chartData.datasets.length > 0 && chartData.datasets.some(ds => ds.data && ds.data.length > 0) ? (
                 <Scatter data={chartData} options={options} />
             ) : (
-                <p style={{ textAlign: 'center', margin: '2rem 0' }}>No data for this date, try another day.</p>
+                <p style={{ textAlign: 'center', paddingLeft: '2rem' }}>No data for this date, try another day.</p>
             )}
             {/* chart controls */}
             <div className="date-toggle-container">
